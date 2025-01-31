@@ -44,7 +44,7 @@ const AddProductForm = () => {
   const mutation = useMutation({
     mutationFn: addProduct,
     onSuccess: (data) => {
-      console.log("Product added successfully:", data);
+     document.write(data)
       alert("Product added successfully");
       client.invalidateQueries(["getProducts"]);
     },
