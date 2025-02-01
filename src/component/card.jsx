@@ -71,7 +71,18 @@
 // };
 // export default Card;
 import { useQuery } from "@tanstack/react-query";
+import Quantity from "./quantity";
+import { useState } from "react";
 const Card = () => {
+  const [qty, setqty] = useState(1);
+  const setqtyIncrease = () => {
+    setqty(qty + 1);
+  };
+  const setqtyDecrease = () => {
+    if (qty != 0) {
+      setqty(qty - 1);
+    }
+  };
   const { data, isLoading, isError } = useQuery({
     queryFn: async () => {
       try {
@@ -126,6 +137,13 @@ const Card = () => {
             <div className="p-3">
               <h1 className="font-bold line-clamp-1  ">{item.title}</h1>
               <h4 className="font-bold text-red-950">Rs.{item.price}</h4>
+              <div className="">
+                <Quantity
+                qty={qty}
+                setqtyIncrease={setqtyIncrease}
+                setqtyDecrease={setqtyDecrease}
+                />
+              </div>
               <div className="flex justify-center p-4 ">
                 <button className=" text-xl   font-bold border border-[#A9C46C] bg-[#5D8736] rounded-lg text-[#F4FFC3] w-[8rem] hover:bg-[#F4FFC3] hover:text-[#A9C46C] ">
                   Buy Now
