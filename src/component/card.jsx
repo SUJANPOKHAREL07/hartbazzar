@@ -74,6 +74,10 @@ import { useQuery } from "@tanstack/react-query";
 import Quantity from "./quantity";
 import { useState } from "react";
 const Card = () => {
+  const [buyButton, setbuyButton] = useState(true);
+  const handelButton = () => {
+    setbuyButton((prev) => !prev);
+  };
   const [qty, setqty] = useState(1);
   const setqtyIncrease = () => {
     setqty(qty + 1);
@@ -139,14 +143,17 @@ const Card = () => {
               <h4 className="font-bold text-red-950">Rs.{item.price}</h4>
               <div className="">
                 <Quantity
-                qty={qty}
-                setqtyIncrease={setqtyIncrease}
-                setqtyDecrease={setqtyDecrease}
+                  qty={qty}
+                  setqtyIncrease={setqtyIncrease}
+                  setqtyDecrease={setqtyDecrease}
                 />
               </div>
               <div className="flex justify-center p-4 ">
-                <button className=" text-xl   font-bold border border-[#A9C46C] bg-[#5D8736] rounded-lg text-[#F4FFC3] w-[8rem] hover:bg-[#F4FFC3] hover:text-[#A9C46C] ">
-                  Buy Now
+                <button
+                  onClick={handelButton}
+                  className=" text-xl  p-2 font-bold border border-[#A9C46C] bg-[#5D8736] rounded-lg text-[#F4FFC3] w-fit hover:bg-[#F4FFC3] hover:text-[#A9C46C] "
+                >
+                  {buyButton ? "Buy Now" : "Remove from cart"}
                 </button>
               </div>
             </div>
