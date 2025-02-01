@@ -4,7 +4,7 @@ import { RiSubtractFill } from "react-icons/ri";
 const Quantity = ({ qty, setqtyIncrease, setqtyDecrease }) => {
   return (
     <>
-      <div className="text-2xl m-2">Quantity</div>
+      <div className="text-2xl m-1 font-medium">Quantity</div>
       <div className="flex space-x-5  ">
         <div className="text-3xl text-[#809D3C] bg-[#F4FFC3] w-fit rounded-4xl h-fit flex justify-center">
           <button
